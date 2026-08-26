@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "movies": "映画",
+    "series": "シリーズ",
+    "browse": "ブラウズ",
+    "bookmarks": "ブックマーク",
+    "history": "履歴",
+    "profile": "プロフィール",
+    "logout": "ログアウト"
+  },
+  "appLayout": {
+    "back": "戻る",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "映画やシリーズを検索",
+    "moviesPlaceholder": "映画を検索",
+    "seriesPlaceholder": "シリーズを検索"
+  },
+  "home": {
+    "trending": "トレンド",
+    "topRated": "高評価",
+    "continueWatching": "続きを見る",
+    "comingSoon": "近日公開",
+    "recentlyViewed": "最近見た",
+    "recommended": "おすすめ",
+    "noResults": "結果が見つかりませんでした"
+  },
+  "categories": {
+    "heading": "ブラウズ",
+    "moods": "ムード",
+    "decades": "年代",
+    "languages": "言語",
+    "platforms": "プラットフォーム"
+  },
+  "series": {
+    "heading": "シリーズ",
+    "filterAll": "すべて",
+    "noResults": "結果が見つかりませんでした"
+  },
+  "movies": {
+    "heading": "映画",
+    "filterAll": "すべて",
+    "noResults": "結果が見つかりませんでした"
+  },
+  "profile": {
+    "heading": "設定",
+    "verified": "確認済み",
+    "notVerified": "未確認",
+    "statsTitle": "統計",
+    "watched": "視聴済み",
+    "bookmarks": "ブックマーク",
+    "languageTitle": "言語",
+    "securityTitle": "セキュリティ",
+    "changePassword": "パスワード変更",
+    "dangerZone": "危険ゾーン",
+    "signOutLabel": "ログアウト",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "delete": "削除"
+  },
+  "detail": {
+    "watchNow": "今すぐ見る",
+    "watchDemo": "デモを見る",
+    "demoQuality": "デモ",
+    "share": "共有",
+    "topCast": "キャスト"
+  },
+  "history": {
+    "heading": "履歴",
+    "empty": "履歴がありません。"
+  },
+  "auth": {
+    "login": "ログイン",
+    "signUp": "登録",
+    "or": "または",
+    "continueWithGoogle": "Googleで続ける"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "お探しのページは見つかりませんでした。",
+    "goHome": "ホームに戻る"
+  },
+  "quickView": {
+    "watchNow": "今すぐ見る"
+  },
+  "playIcon": {
+    "play": "再生"
+  }
+}

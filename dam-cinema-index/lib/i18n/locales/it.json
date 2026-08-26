@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "movies": "Film",
+    "series": "Serie TV",
+    "browse": "Sfoglia",
+    "bookmarks": "Preferiti",
+    "history": "Cronologia",
+    "profile": "Profilo",
+    "logout": "Esci"
+  },
+  "appLayout": {
+    "back": "Indietro",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Cerca film o serie TV",
+    "moviesPlaceholder": "Cerca film",
+    "seriesPlaceholder": "Cerca serie TV"
+  },
+  "home": {
+    "trending": "Tendenze",
+    "topRated": "Più votati",
+    "continueWatching": "Continua a guardare",
+    "comingSoon": "Prossimamente",
+    "recentlyViewed": "Visti di recente",
+    "recommended": "Consigliati per te",
+    "noResults": "Nessun risultato trovato"
+  },
+  "categories": {
+    "heading": "Sfoglia",
+    "moods": "Stati d'animo",
+    "decades": "Decenni",
+    "languages": "Lingue",
+    "platforms": "Piattaforme"
+  },
+  "series": {
+    "heading": "Serie TV",
+    "filterAll": "Tutti",
+    "noResults": "Nessun risultato trovato"
+  },
+  "movies": {
+    "heading": "Film",
+    "filterAll": "Tutti",
+    "noResults": "Nessun risultato trovato"
+  },
+  "profile": {
+    "heading": "Impostazioni",
+    "verified": "Verificato",
+    "notVerified": "Non verificato",
+    "statsTitle": "Le tue statistiche",
+    "watched": "Visti",
+    "bookmarks": "Preferiti",
+    "languageTitle": "Lingua",
+    "securityTitle": "Sicurezza",
+    "changePassword": "Cambia password",
+    "dangerZone": "Zona pericolosa",
+    "signOutLabel": "Esci",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "delete": "Elimina"
+  },
+  "detail": {
+    "watchNow": "Guarda ora",
+    "watchDemo": "Guarda la demo",
+    "demoQuality": "Demo",
+    "share": "Condividi",
+    "topCast": "Cast"
+  },
+  "history": {
+    "heading": "Cronologia",
+    "empty": "Nessuna cronologia."
+  },
+  "auth": {
+    "login": "Accedi",
+    "signUp": "Registrati",
+    "or": "o",
+    "continueWithGoogle": "Continua con Google"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "Ops! La pagina che cerchi non esiste.",
+    "goHome": "Torna alla home"
+  },
+  "quickView": {
+    "watchNow": "Guarda ora"
+  },
+  "playIcon": {
+    "play": "Riproduci"
+  }
+}

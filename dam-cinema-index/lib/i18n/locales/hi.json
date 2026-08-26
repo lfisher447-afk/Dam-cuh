@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "होम",
+    "movies": "फ़िल्में",
+    "series": "सीरीज़",
+    "browse": "ब्राउज़ करें",
+    "bookmarks": "बुकमार्क",
+    "history": "इतिहास",
+    "profile": "प्रोफ़ाइल",
+    "logout": "लॉग आउट"
+  },
+  "appLayout": {
+    "back": "वापस",
+    "brand": "WòFlix"
+  },
+  "home": {
+    "trending": "ट्रेंडिंग",
+    "topRated": "टॉप रेटेड",
+    "continueWatching": "देखना जारी रखें",
+    "comingSoon": "जल्द आ रहा है",
+    "noResults": "कोई परिणाम नहीं मिला"
+  },
+  "categories": {
+    "heading": "ब्राउज़ करें",
+    "moods": "मूड",
+    "decades": "दशक",
+    "languages": "भाषाएँ",
+    "platforms": "प्लेटफ़ॉर्म"
+  },
+  "series": {
+    "heading": "सीरीज़",
+    "filterAll": "सभी",
+    "noResults": "कोई परिणाम नहीं मिला"
+  },
+  "movies": {
+    "heading": "फ़िल्में",
+    "filterAll": "सभी",
+    "noResults": "कोई परिणाम नहीं मिला"
+  },
+  "profile": {
+    "heading": "सेटिंग्स",
+    "statsTitle": "आपके आँकड़े",
+    "watched": "देखा गया",
+    "bookmarks": "बुकमार्क",
+    "languageTitle": "भाषा",
+    "securityTitle": "सुरक्षा",
+    "changePassword": "पासवर्ड बदलें",
+    "dangerZone": "खतरे का क्षेत्र",
+    "signOutLabel": "लॉग आउट",
+    "cancel": "रद्द करें",
+    "confirm": "पुष्टि करें",
+    "delete": "हटाएं"
+  },
+  "detail": {
+    "watchNow": "अभी देखें",
+    "watchDemo": "डेमो देखें",
+    "demoQuality": "डेमो",
+    "share": "शेयर करें"
+  },
+  "history": {
+    "heading": "इतिहास",
+    "empty": "अभी तक कोई इतिहास नहीं।"
+  },
+  "auth": {
+    "login": "लॉग इन",
+    "signUp": "साइन अप",
+    "or": "या",
+    "continueWithGoogle": "Google के साथ जारी रखें"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "आप जिस पेज की तलाश कर रहे हैं वह मौजूद नहीं है।",
+    "goHome": "होम पर वापस जाएं"
+  },
+  "quickView": {
+    "watchNow": "अभी देखें"
+  },
+  "playIcon": {
+    "play": "चलाएं"
+  }
+}

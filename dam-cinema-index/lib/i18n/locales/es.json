@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "movies": "Películas",
+    "series": "Series TV",
+    "browse": "Explorar",
+    "bookmarks": "Favoritos",
+    "history": "Historial",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión"
+  },
+  "appLayout": {
+    "back": "Volver",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Buscar películas o series",
+    "moviesPlaceholder": "Buscar películas",
+    "seriesPlaceholder": "Buscar series TV"
+  },
+  "home": {
+    "trending": "Tendencias",
+    "topRated": "Mejor valorados",
+    "continueWatching": "Seguir viendo",
+    "comingSoon": "Próximamente",
+    "recentlyViewed": "Vistos recientemente",
+    "recommended": "Recomendados para ti",
+    "feelingLucky": "Me siento con suerte",
+    "noResults": "Sin resultados",
+    "updating": "Actualizando resultados..."
+  },
+  "hero": {
+    "comingSoon": "Próximamente",
+    "moreInfo": "Más información",
+    "watchNow": "Ver ahora"
+  },
+  "categories": {
+    "heading": "Explorar",
+    "moods": "Estados de ánimo",
+    "decades": "Décadas",
+    "languages": "Idiomas",
+    "platforms": "Plataformas"
+  },
+  "series": {
+    "heading": "Series TV",
+    "filterAll": "Todo",
+    "noResults": "Sin resultados"
+  },
+  "movies": {
+    "heading": "Películas",
+    "filterAll": "Todo",
+    "noResults": "Sin resultados"
+  },
+  "profile": {
+    "heading": "Ajustes",
+    "notSignedIn": "Inicia sesión para ver los ajustes.",
+    "verified": "Verificado",
+    "notVerified": "No verificado",
+    "statsTitle": "Tus estadísticas",
+    "watched": "Vistos",
+    "bookmarks": "Favoritos",
+    "topCategory": "Categoría favorita",
+    "languageTitle": "Idioma",
+    "securityTitle": "Seguridad",
+    "changePassword": "Cambiar contraseña",
+    "dangerZone": "Zona peligrosa",
+    "signOutLabel": "Cerrar sesión",
+    "signOutDesc": "Cerrar sesión de tu cuenta",
+    "clearHistoryLabel": "Borrar historial",
+    "clearHistoryDesc": "Eliminar todo tu historial",
+    "clear": "Borrar",
+    "deleteAccountLabel": "Eliminar cuenta",
+    "deleteAccountDesc": "Eliminar permanentemente tu cuenta y datos",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "savePassword": "Guardar contraseña"
+  },
+  "detail": {
+    "watchNow": "Ver ahora",
+    "watchDemo": "Ver demo",
+    "demoQuality": "Demo",
+    "share": "Compartir",
+    "moreLikeThis": "Más como esto",
+    "topCast": "Reparto"
+  },
+  "history": {
+    "heading": "Historial",
+    "empty": "No hay historial."
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "loginToAccount": "Inicia sesión",
+    "createAccount": "Crea tu cuenta",
+    "or": "o",
+    "dontHaveAccount": "¿No tienes cuenta?",
+    "alreadyHaveAccount": "¿Ya tienes cuenta?",
+    "signUpLink": "Regístrate",
+    "loginLink": "Inicia sesión",
+    "continueWithGoogle": "Continuar con Google"
+  },
+  "authLayout": {
+    "tagline": "Descubre tu próxima película o serie favorita."
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "¡Ups! La página que buscas no existe.",
+    "goHome": "Volver al inicio"
+  },
+  "quickView": {
+    "noOverview": "Sin resumen disponible.",
+    "watchNow": "Ver ahora"
+  },
+  "playIcon": {
+    "play": "Reproducir"
+  }
+}

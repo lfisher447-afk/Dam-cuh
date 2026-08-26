@@ -1,0 +1,821 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-fill: hsl(var(--primary-fill));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-border: border 4s ease infinite;
+  --animate-equalize: equalize 1s ease-in-out infinite;
+  /* Slow cinematic push-in for hero artwork; longer than the 5s autoplay so
+     each slide keeps drifting and never settles. Reduced-motion opts out. */
+  --animate-hero-kenburns: hero-kenburns 14s ease-out both;
+  /* Entrance for the empty/error state's stack: fade up, staggered by an inline
+     animation-delay per child. This exists in CSS rather than framer-motion
+     because its only consumer (components/ui/empty-state.tsx) is reachable from
+     app/error.tsx — the ROOT error boundary, which Next bundles into every
+     route's client JS. One `motion.div` there put 145KB of framer (48KB over the
+     wire) on every page of the site to animate a screen that almost never
+     renders. `both` holds the opening frame so nothing flashes before its delay
+     elapses. */
+  --animate-rise-in: rise-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes border {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+      opacity: 0.5;
+    }
+  }
+  @keyframes equalize {
+    0%,
+    100% {
+      transform: scaleY(0.35);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes hero-kenburns {
+    from {
+      transform: scale(1.05);
+    }
+    to {
+      transform: scale(1.16) translate3d(-1.2%, -1.4%, 0);
+    }
+  }
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  /* Autoplay progress fill — transform-only (GPU) so the bar is cheap to run
+     every slide. Duration is set inline to match the autoplay interval. */
+  @keyframes hero-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  /* Phones get a tighter gutter so hero copy and rows aren't cramped into the
+     middle third; the roomy 2rem gutter kicks in from `sm` up. */
+  padding-inline: 1.25rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+    padding-inline: 2rem;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Poster rails (components/list.tsx) scroll natively. Hide the scrollbar so the
+   row reads as a clean carousel — nav is swipe/trackpad on touch, hover-revealed
+   glass arrows on lg+. Scroll position is still fully accessible. */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE / old Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome / Safari / WebKit */
+  }
+
+  /* Reels is a full-bleed vertical feed: the fixed header overlays it, and the
+     sticky footer would push the document taller than one viewport - window
+     scroll would then fight the feed's snap scroll and a scrollbar would
+     reflect footer space, not content. The footer yields while a reel viewport
+     is mounted. */
+  body:has(.reels-viewport) .site-footer {
+    display: none;
+  }
+
+  /* The tip-jar button is fixed to the bottom-left corner, which on the feed is
+     the corner the title, the rating and Watch now already occupy. It steps
+     aside for the duration, like the footer and the install nudge. The widget
+     is a third party that styles itself inline, hence !important. */
+  body:has(.reels-viewport) #bmc-wbtn {
+    display: none !important;
+  }
+
+  /* Focus mode: the reel is the whole screen - header joins the footer off
+     stage so nothing competes with the trailer. Toggled by the expand button
+     on each slide; Escape leaves it. */
+  body:has(.reels-focus) .site-header {
+    display: none;
+  }
+
+  /* The trailer iframe is 16:9 but the reel is portrait: rendered inset-0 the
+     video letterboxes and YouTube's title overlay sits stranded in the dead
+     band at the top. Scaled to COVER the viewport instead (the img
+     object-fit trick, by hand for an iframe), the video fills every pixel and
+     the overlay crops offscreen. */
+  .reel-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max(100vw, 177.78dvh);
+    height: max(56.25vw, 100dvh);
+    border: 0;
+  }
+
+  /* Skip layout+paint for offscreen content until it scrolls near the viewport.
+     The homepage stacks many poster rails; only the first couple are above the
+     fold, so the rest cost nothing to render initially. `contain-intrinsic-size`
+     reserves an estimated height so the scrollbar and page height stay stable
+     (no jump as rows realize). ~420px ≈ heading + one poster row. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 420px;
+  }
+}
+
+/* Hero trailer preview: object-cover a 16:9 YouTube iframe over the hero at any
+   aspect. The wrapper is a size container; the iframe takes the larger of the
+   container's own dimension and the dimension a full-bleed 16:9 frame needs, so
+   the excess axis overflows and is clipped — full-bleed video, never letterboxed
+   (the old vw/vh hack left black bars on the shorter mobile hero). */
+.hero-trailer-cover {
+  container-type: size;
+}
+.hero-trailer-cover > iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: max(100cqh, 56.25cqw);
+  width: max(100cqw, 177.78cqh);
+  border: 0;
+  /* Most trailers are a 2.39:1 image letterboxed inside a 16:9 upload, so a
+     perfect 16:9 cover still shows the source's baked-in black bars. Overscale
+     to push those bars past the edges (2.39:1 needs ~1.34×) — an ambient,
+     cinematic crop; the title/meta overlay is the focus, not the frame edges. */
+  scale: 1.35;
+}
+/* Full view (native fullscreen): keep the full-bleed crop, just a black base. */
+.hero-trailer-cover:fullscreen {
+  background: #000;
+}
+
+/* Fixed animated aurora backdrop behind ALL content (mounted once in the root
+   layout, so it's on every page). A deep static base keeps corners from going
+   flat-black, and two big soft glow-blobs roam slowly across the viewport for a
+   living, cinematic feel. Fixed position = content scrolls over it (parallax).
+   Only `transform` animates (compositor-only, no scroll repaint since it's
+   fixed) so it stays cheap; reduced-motion freezes both blobs. */
+.site-aurora {
+  background-color: hsl(222.2 84% 4.9%);
+  background-image:
+    radial-gradient(
+      50% 45% at 8% -5%,
+      hsl(221 83% 53% / 0.16),
+      transparent 62%
+    ),
+    radial-gradient(
+      55% 50% at 50% 112%,
+      hsl(262 83% 58% / 0.16),
+      transparent 62%
+    );
+}
+.site-aurora::before,
+.site-aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+}
+.site-aurora::before {
+  top: -18vw;
+  left: -12vw;
+  width: 58vw;
+  height: 58vw;
+  background: radial-gradient(
+    circle,
+    hsl(221 83% 53% / 0.38),
+    hsl(199 89% 48% / 0.2) 45%,
+    transparent 70%
+  );
+  animation: aurora-a 24s ease-in-out infinite alternate;
+}
+.site-aurora::after {
+  right: -14vw;
+  bottom: -20vw;
+  width: 52vw;
+  height: 52vw;
+  background: radial-gradient(
+    circle,
+    hsl(262 83% 58% / 0.34),
+    hsl(221 83% 53% / 0.18) 45%,
+    transparent 70%
+  );
+  animation: aurora-b 31s ease-in-out infinite alternate;
+}
+/* The blobs ROAM but never RESIZE, and that distinction is the whole cost here.
+   Each of these is a 58vw square carrying `filter: blur(70px)`, and it animates
+   forever, on every page. A translate of that is free: the compositor shifts a
+   texture it already has. A scale is not — a transform that changes SIZE cannot
+   be composited from the existing raster, so every frame re-blurred a
+   viewport-sized layer at a new scale, at 70px radius, for as long as the tab
+   was open. That is continuous raster work behind every page on the site, and it
+   is worst exactly where it can least be afforded.
+   The scale is kept, but CONSTANT — same value at both stops — so the blobs sit
+   at the size they always did and the animation is pure translation. What is
+   gone is a 25%-over-24s size pulse on a heavily blurred, 38%-opacity blob.
+   Same trade, and the same reasoning, as the scales removed from the carousel. */
+@keyframes aurora-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.12);
+  }
+  to {
+    transform: translate3d(32vw, 20vh, 0) scale(1.12);
+  }
+}
+@keyframes aurora-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.06);
+  }
+  to {
+    transform: translate3d(-28vw, -22vh, 0) scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-aurora::before,
+  .site-aurora::after {
+    animation: none;
+  }
+  /* Same entrance, minus the movement. Redefining the keyframes keeps one class
+     and one set of delays at the call site — and unlike framer's
+     useReducedMotion, the preference is honoured by the first painted frame
+     rather than after hydration reads it. */
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Phones get the static wash and nothing else.
+   These two blobs are the most expensive thing on the page, and it is not close:
+   each is a viewport-sized layer carrying `filter: blur(70px)`, permanently
+   promoted, animating for as long as the tab is open — on EVERY page. A CPU
+   profile of a carousel swipe on a 393px viewport at 6x throttle came back 74.7%
+   `(program)`: the swipe was not spending its time in JavaScript at all, it was
+   spending it in native paint/raster/composite, and this is the layer driving
+   that. It is also the least visible thing on the page, because on a phone it
+   sits behind a full-bleed opaque hero.
+   `.site-aurora` keeps its own two radial-gradients, which is where the colour
+   actually comes from — so the backdrop still reads as the same deep blue-violet
+   wash, just without two blurred blobs roaming across it. Desktop is untouched.
+   Keyed on `hover: none` rather than width: this is about the device's GPU, and
+   a coarse pointer identifies a phone better than a viewport that any desktop
+   can produce by narrowing a window. */
+@media (hover: none) {
+  .site-aurora::before,
+  .site-aurora::after {
+    display: none;
+  }
+}
+
+/* Moving sparkles. Two tiled star fields, each a single repeating background so
+   there's no per-star DOM. They drift by exactly one tile (seamless loop) and
+   twinkle via opacity — both compositor-only, so hundreds of "stars" cost about
+   as much as one moving box. Different speeds/sizes give depth (parallax). */
+.aurora-stars {
+  position: absolute;
+  inset: -35%;
+  background-repeat: repeat;
+}
+.aurora-stars--1 {
+  background-image:
+    radial-gradient(
+      1.5px 1.5px at 40px 60px,
+      rgba(255, 255, 255, 0.9),
+      transparent
+    ),
+    radial-gradient(
+      1px 1px at 130px 20px,
+      rgba(191, 219, 254, 0.8),
+      transparent
+    ),
+    radial-gradient(
+      1.5px 1.5px at 220px 140px,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      1px 1px at 300px 90px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      1px 1px at 90px 220px,
+      rgba(147, 197, 253, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      1.5px 1.5px at 250px 280px,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+  background-size: 340px 340px;
+  animation:
+    stars-drift-1 90s linear infinite,
+    stars-twinkle 6s ease-in-out infinite alternate;
+}
+.aurora-stars--2 {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(
+      2px 2px at 60px 90px,
+      rgba(255, 255, 255, 0.95),
+      transparent
+    ),
+    radial-gradient(
+      1.5px 1.5px at 180px 40px,
+      rgba(196, 181, 253, 0.8),
+      transparent
+    ),
+    radial-gradient(
+      1.5px 1.5px at 110px 190px,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 230px 150px,
+      rgba(191, 219, 254, 0.75),
+      transparent
+    );
+  background-size: 260px 260px;
+  animation:
+    stars-drift-2 62s linear infinite,
+    stars-twinkle 4.5s ease-in-out infinite alternate;
+}
+@keyframes stars-drift-1 {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-340px, -340px, 0);
+  }
+}
+@keyframes stars-drift-2 {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(260px, -260px, 0);
+  }
+}
+@keyframes stars-twinkle {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-stars--1,
+  .aurora-stars--2 {
+    animation: none;
+  }
+}
+
+/* Same call as the blobs above, for the same reason. Two more viewport-sized
+   layers (inset -35%, so ~170% of the viewport each) animating forever behind an
+   opaque hero. Cheaper per frame than a 70px blur — translate and opacity only —
+   but still two permanently-composited full-screen layers a phone is painting
+   for something it cannot see. */
+@media (hover: none) {
+  .aurora-stars--1,
+  .aurora-stars--2 {
+    display: none;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    /*
+      Two blues, on purpose.
+
+      --primary is the accent: text, icons, rings, tints. It has to stay light
+      enough to read as a colour against this near-black background (blue-500
+      on it is 5.1:1; blue-600 would be 3.6:1, which is where link text starts
+      looking muddy).
+
+      --primary-fill is the same blue as a *background*, one step deeper, and it
+      exists because the label sitting on it has the opposite requirement: white
+      on blue-500 is only 3.7:1, which fails AA at the 14px a button label
+      actually is. On blue-600 the same white label is 5.2:1.
+
+      So: --primary for colour, --primary-fill wherever --primary-foreground is
+      painted on top of it. An accent that reads fine both ways (below) just
+      sets them to the same value.
+    */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-fill: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-fill: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  /*
+    Always reserve the scrollbar gutter so opening a Radix overlay
+    (Select, Dialog, Popover, Sheet) — which locks body scroll and
+    strips the scrollbar — does not change layout width.
+  */
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  /*
+    Pull-to-refresh, suppressed ONLY while a finger is down on the hero.
+
+    The hero carousel sits at the top of the page and is a horizontal drag
+    surface carrying `touch-action: pan-y` — it has to be, or you could not
+    scroll the page by starting the gesture on the hero. That leaves Android
+    Chrome free to claim the VERTICAL component of a swipe, and at scrollTop 0 a
+    downward claim is a page reload. A slightly diagonal thumb flick — which is
+    most real swipes — silently reloaded the site: back to slide 1 with the
+    artwork undecoded, which looks exactly like the carousel breaking. Caught on
+    a screen recording.
+
+    The first fix put `overscroll-behavior-y: contain` on html permanently,
+    which killed pull-to-refresh everywhere to solve one component's problem.
+    The carousel sets this attribute on pointerdown and clears it on pointerup
+    instead, so the gesture is only contained for the duration of a hero drag.
+    Pull-to-refresh works normally on every other part of every page, including
+    the rest of the homepage.
+  */
+  html[data-hero-dragging] {
+    overscroll-behavior-y: contain;
+  }
+  /*
+    Radix overlays lock scroll via react-remove-scroll, which injects
+    `body[data-scroll-locked] { margin-right: 8px !important }` to make up
+    for the removed scrollbar. The fixed site header is viewport-relative
+    and never gets that margin, so the body content visibly jumps while the
+    header stays put. The gutter above already reserves the space, so the
+    compensating margin is what shifts the layout — cancel it.
+
+    `html body[...]` (not just `body[...]`) is required: react-remove-scroll
+    injects its rule into <head> at runtime, after this file, so an equal-
+    specificity `!important` would lose on source order. The extra `html`
+    raises specificity so this wins regardless of injection order.
+  */
+  html body[data-scroll-locked] {
+    margin-right: 0 !important;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+  /*
+    Tailwind v4's Preflight no longer sets `cursor: pointer` on buttons, so
+    every actionable control (native <button>, Radix triggers that render a
+    button such as Select/Dialog, and role="button" elements) would otherwise
+    show the default arrow. Apply it globally here instead of per-component.
+    Disabled controls keep the default cursor (or their own cursor-not-allowed
+    utility, which lives in the utilities layer and outranks this base rule).
+  */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+}
+
+/*
+  Supporter accents.
+
+  One attribute on <html> repaints the whole site, because every accented
+  surface in this codebase already reads --primary rather than a literal colour.
+  That is the only reason this feature is six lines per palette instead of a
+  theming rewrite: the discipline was already there.
+
+  Set from the cached profile by the inline script in app/layout.tsx before the
+  first paint, so a supporter's colour is never a flash of blue first. The
+  fallback (no attribute) is Reely's own blue, which is what everyone else sees.
+
+  --primary-foreground is set alongside every accent: it is the text ON the
+  accent, and an accent light enough to need dark text (amber, cyan) makes white
+  labels unreadable. Contrast is not optional here.
+
+  --primary-fill only has to differ from --primary where the label is white: a
+  white-on-colour pair needs the fill a step deeper than the colour is allowed
+  to be as text (see the note next to the default blue). The three accents with
+  dark labels are already far past AA, so their fill is the accent itself.
+*/
+html[data-accent='ember'] {
+  --primary: 24 90% 55%;
+  --primary-fill: 24 90% 55%;
+  --primary-foreground: 20 60% 10%;
+  --ring: 24 90% 55%;
+}
+html[data-accent='ocean'] {
+  --primary: 190 85% 48%;
+  --primary-fill: 190 85% 48%;
+  --primary-foreground: 195 70% 8%;
+  --ring: 190 85% 48%;
+}
+html[data-accent='forest'] {
+  --primary: 152 60% 45%;
+  --primary-fill: 152 60% 45%;
+  --primary-foreground: 155 60% 8%;
+  --ring: 152 60% 45%;
+}
+html[data-accent='violet'] {
+  --primary: 268 75% 62%;
+  --primary-fill: 268 72% 53%;
+  --primary-foreground: 270 60% 98%;
+  --ring: 268 75% 62%;
+}
+html[data-accent='rose'] {
+  --primary: 346 80% 58%;
+  --primary-fill: 346 76% 46%;
+  --primary-foreground: 345 60% 98%;
+  --ring: 346 80% 58%;
+}
+
+/*
+  Density, as one number.
+
+  Tailwind's whole spacing and type scale is in `rem`, so moving the root font
+  size moves padding, gaps, text and card sizes together, in proportion — which
+  is what "denser" actually means. The alternative was a compact variant on every
+  grid, list and card in the app: dozens of edits, all of them able to drift out
+  of step with each other.
+
+  6.25% (16px to 15px) is deliberately mild. It fits roughly one more poster per
+  row at common widths without making anything look cramped or breaking the
+  header's single-line budget.
+*/
+html[data-density='compact'] {
+  font-size: 93.75%;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width*/
+}
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Set the background color of the thumb */
+  border-radius: 4px; /* Adjust the border radius as needed */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Set the background color of the thumb on hover */
+}
+
+/* Hide the global site footer while an infinite-scroll list still has more pages.
+   The footer sits at the document bottom and is shorter than the viewport, so a
+   fling to scroll-max would otherwise flash it during the gap between pages. The
+   list components set body[data-list-has-more] from their query's hasNextPage;
+   the footer returns once the list is exhausted. */
+body[data-list-has-more='true'] footer {
+  display: none;
+}
+
+/* The tip jar stacks itself at z-index 9999 and up — its button, its prompt,
+   its backdrop and its iframe — which puts it over every dialog, sheet and
+   toast we own at z-50. Two of the nodes it appends to <body> carry no id and
+   no class, so the handle is the inline z-index it writes on them; sonner and
+   the Radix portals set theirs from classes, and are untouched.
+
+   The widget is two things at two moments, and they want opposite answers.
+   Closed, it is a 64px button in a corner, which must sit under every dialog,
+   sheet and toast. Open below 480px, it is the entire screen — and then it must
+   sit above them, or our own fixed chrome draws on top of the provider's
+   payment form.
+
+   So the band goes to 60, above every overlay of ours, and the button alone is
+   pulled back to 39 below. The nodes this rule lands on are 0x0 until the panel
+   opens, so ranking them above everything costs nothing while closed, and the
+   only way to open the panel is to reach the button — which is under our
+   overlays, so it cannot be tapped while one is up.
+
+   Raising our overlays past 9999 instead would work once, then have to be
+   repeated for the next one. */
+body > iframe[id^='bmc-'],
+body > div[style*='z-index: 9999'] {
+  z-index: 60 !important;
+}
+
+/* ...with the button as the exception, and it is the whole reason the widget
+   can be closed at all.
+
+   The vendor's button handler only ever *opens*: it swaps the cup for a chevron
+   and keeps the same open-again onclick. There is no toggle in the bundle.
+   Closing is the backdrop's job — the class-less <div> it inflates to fill the
+   screen at 9999999, above the button's 9999, so the click that looks like it
+   lands on the chevron lands on the backdrop, whose onclick closes.
+
+   Flattening both onto one band destroys that: same z-index, and the button is
+   appended after the backdrop, so DOM order lifts it on top and the chevron
+   re-runs "open". On a phone that leaves the bundle's own close button as the
+   only way out of a full-screen iframe.
+
+   39 is below the backdrop, restoring the vendor's ordering, and below every
+   overlay of ours, which is the constraint the band above was written for and
+   the button is now the only node that still needs. The backdrop is 0x0 while
+   closed, so it never blocks the opening click. */
+#bmc-wbtn {
+  z-index: 39 !important;
+}
+
+/* Where the close control lives on a phone.
+
+   On a narrow screen the widget's panel is the whole screen — the iframe is
+   100vw wide and, because the bundle sets an explicit height on top of its
+   `bottom`, tall enough to reach the bottom edge too. The button and its
+   chevron are behind all of it, so the only way out is the bundle's own close
+   button, which it parks at `top: 16px; right: 16px` as a 16px grey x on
+   nothing — over the avatar and pin the provider's page draws in that same
+   corner, and in an installed PWA, where there is no browser chrome and the
+   panel starts at the true top of the display, under the status bar. On screen
+   the whole time and impossible to see.
+
+   So: bottom left, matching `data-position`, so the control sits in the corner
+   the widget's own button occupies when closed and does not travel between
+   states. On a dark disc, because the panel behind it is white.
+
+   Lifted clear of two things rather than one. `env(safe-area-inset-bottom)`
+   keeps it off the home indicator, and the 64px on top of that clears the
+   provider's own `buymeacoffee.com/…` pill, which is pinned to the bottom of
+   its page and runs nearly the full width — so there is no sideways position
+   that avoids it, only a higher one. The strip in between is empty at every
+   scroll position, because the pill is pinned and the content stops short of
+   it. `env()` resolves because the viewport is `viewport-fit: cover`.
+
+   The button carries an empty onclick and closes only because the click bubbles
+   to the backdrop, so nothing here may stop propagation. The bundle leaves it
+   `visibility: hidden` above 480px, where the panel is a corner card and
+   clicking beside it closes — untouched here. */
+#bmc-close-btn {
+  top: auto !important;
+  right: auto !important;
+  left: calc(18px + env(safe-area-inset-left)) !important;
+  bottom: calc(64px + env(safe-area-inset-bottom)) !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: #0d0c22 !important;
+  box-shadow: 0 6px 20px rgb(13 12 34 / 0.35) !important;
+}
+#bmc-close-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+#bmc-close-btn svg path {
+  fill: #fff !important;
+}
+
+/* The PWA install nudge is fixed to the bottom of the viewport, which is also
+   where an embed keeps its scrubber and where the server switcher sits. While
+   a player is open the page IS the player, so the nudge steps aside; the
+   attribute is set by components/details-hero.tsx for the duration. */
+body[data-player-open] .pwa-install-prompt {
+  display: none;
+}

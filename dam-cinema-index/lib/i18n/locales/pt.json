@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Início",
+    "movies": "Filmes",
+    "series": "Séries",
+    "browse": "Explorar",
+    "bookmarks": "Favoritos",
+    "history": "Histórico",
+    "profile": "Perfil",
+    "logout": "Sair"
+  },
+  "appLayout": {
+    "back": "Voltar",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Pesquisar filmes ou séries",
+    "moviesPlaceholder": "Pesquisar filmes",
+    "seriesPlaceholder": "Pesquisar séries"
+  },
+  "home": {
+    "trending": "Em alta",
+    "topRated": "Melhores avaliados",
+    "continueWatching": "Continuar assistindo",
+    "comingSoon": "Em breve",
+    "recentlyViewed": "Vistos recentemente",
+    "recommended": "Recomendados para você",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "categories": {
+    "heading": "Explorar",
+    "moods": "Humor",
+    "decades": "Décadas",
+    "languages": "Idiomas",
+    "platforms": "Plataformas"
+  },
+  "series": {
+    "heading": "Séries",
+    "filterAll": "Todos",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "movies": {
+    "heading": "Filmes",
+    "filterAll": "Todos",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "profile": {
+    "heading": "Configurações",
+    "verified": "Verificado",
+    "notVerified": "Não verificado",
+    "statsTitle": "Suas estatísticas",
+    "watched": "Assistidos",
+    "bookmarks": "Favoritos",
+    "languageTitle": "Idioma",
+    "securityTitle": "Segurança",
+    "changePassword": "Alterar senha",
+    "dangerZone": "Zona perigosa",
+    "signOutLabel": "Sair",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Excluir"
+  },
+  "detail": {
+    "watchNow": "Assistir agora",
+    "watchDemo": "Ver demonstração",
+    "demoQuality": "Demonstração",
+    "share": "Compartilhar",
+    "topCast": "Elenco"
+  },
+  "history": {
+    "heading": "Histórico",
+    "empty": "Nenhum histórico."
+  },
+  "auth": {
+    "login": "Entrar",
+    "signUp": "Cadastrar",
+    "or": "ou",
+    "continueWithGoogle": "Continuar com Google"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "Ops! A página que você procura não existe.",
+    "goHome": "Voltar ao início"
+  },
+  "quickView": {
+    "watchNow": "Assistir agora"
+  },
+  "playIcon": {
+    "play": "Reproduzir"
+  }
+}

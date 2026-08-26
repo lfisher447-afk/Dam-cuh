@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "홈",
+    "movies": "영화",
+    "series": "시리즈",
+    "browse": "찾아보기",
+    "bookmarks": "북마크",
+    "history": "기록",
+    "profile": "프로필",
+    "logout": "로그아웃"
+  },
+  "appLayout": {
+    "back": "뒤로",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "영화 또는 시리즈 검색",
+    "moviesPlaceholder": "영화 검색",
+    "seriesPlaceholder": "시리즈 검색"
+  },
+  "home": {
+    "trending": "트렌딩",
+    "topRated": "최고 평점",
+    "continueWatching": "계속 시청",
+    "comingSoon": "곧 공개",
+    "recentlyViewed": "최근 시청",
+    "recommended": "추천 콘텐츠",
+    "noResults": "결과를 찾을 수 없습니다"
+  },
+  "categories": {
+    "heading": "찾아보기",
+    "moods": "분위기",
+    "decades": "연대",
+    "languages": "언어",
+    "platforms": "플랫폼"
+  },
+  "series": {
+    "heading": "시리즈",
+    "filterAll": "전체",
+    "noResults": "결과를 찾을 수 없습니다"
+  },
+  "movies": {
+    "heading": "영화",
+    "filterAll": "전체",
+    "noResults": "결과를 찾을 수 없습니다"
+  },
+  "profile": {
+    "heading": "설정",
+    "verified": "인증됨",
+    "notVerified": "인증되지 않음",
+    "statsTitle": "통계",
+    "watched": "시청함",
+    "bookmarks": "북마크",
+    "languageTitle": "언어",
+    "securityTitle": "보안",
+    "changePassword": "비밀번호 변경",
+    "dangerZone": "위험 구역",
+    "signOutLabel": "로그아웃",
+    "cancel": "취소",
+    "confirm": "확인",
+    "delete": "삭제"
+  },
+  "detail": {
+    "watchNow": "지금 시청",
+    "watchDemo": "데모 보기",
+    "demoQuality": "데모",
+    "share": "공유",
+    "topCast": "출연진"
+  },
+  "history": {
+    "heading": "기록",
+    "empty": "기록이 없습니다."
+  },
+  "auth": {
+    "login": "로그인",
+    "signUp": "회원가입",
+    "or": "또는",
+    "continueWithGoogle": "Google로 계속"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "찾으시는 페이지가 존재하지 않습니다.",
+    "goHome": "홈으로 돌아가기"
+  },
+  "quickView": {
+    "watchNow": "지금 시청"
+  },
+  "playIcon": {
+    "play": "재생"
+  }
+}

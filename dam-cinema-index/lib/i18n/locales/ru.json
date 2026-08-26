@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Главная",
+    "movies": "Фильмы",
+    "series": "Сериалы",
+    "browse": "Обзор",
+    "bookmarks": "Закладки",
+    "history": "История",
+    "profile": "Профиль",
+    "logout": "Выйти"
+  },
+  "appLayout": {
+    "back": "Назад",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Поиск фильмов или сериалов",
+    "moviesPlaceholder": "Поиск фильмов",
+    "seriesPlaceholder": "Поиск сериалов"
+  },
+  "home": {
+    "trending": "В тренде",
+    "topRated": "Лучшие",
+    "continueWatching": "Продолжить просмотр",
+    "comingSoon": "Скоро",
+    "recentlyViewed": "Недавно просмотренные",
+    "recommended": "Рекомендовано для вас",
+    "noResults": "Результатов не найдено"
+  },
+  "categories": {
+    "heading": "Обзор",
+    "moods": "Настроение",
+    "decades": "Десятилетия",
+    "languages": "Языки",
+    "platforms": "Платформы"
+  },
+  "series": {
+    "heading": "Сериалы",
+    "filterAll": "Все",
+    "noResults": "Результатов не найдено"
+  },
+  "movies": {
+    "heading": "Фильмы",
+    "filterAll": "Все",
+    "noResults": "Результатов не найдено"
+  },
+  "profile": {
+    "heading": "Настройки",
+    "verified": "Подтверждён",
+    "notVerified": "Не подтверждён",
+    "statsTitle": "Ваша статистика",
+    "watched": "Просмотрено",
+    "bookmarks": "Закладки",
+    "languageTitle": "Язык",
+    "securityTitle": "Безопасность",
+    "changePassword": "Сменить пароль",
+    "dangerZone": "Опасная зона",
+    "signOutLabel": "Выйти",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "delete": "Удалить"
+  },
+  "detail": {
+    "watchNow": "Смотреть сейчас",
+    "watchDemo": "Смотреть демо",
+    "demoQuality": "Демо",
+    "share": "Поделиться",
+    "topCast": "Актёры"
+  },
+  "history": {
+    "heading": "История",
+    "empty": "История пуста."
+  },
+  "auth": {
+    "login": "Войти",
+    "signUp": "Регистрация",
+    "or": "или",
+    "continueWithGoogle": "Продолжить с Google"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "Упс! Страница не найдена.",
+    "goHome": "На главную"
+  },
+  "quickView": {
+    "watchNow": "Смотреть сейчас"
+  },
+  "playIcon": {
+    "play": "Воспроизвести"
+  }
+}

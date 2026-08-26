@@ -1,0 +1,132 @@
+# Cloudflare Static Assets header overrides.
+#
+# This file also carries what `next.config.mjs` headers() used to do: that hook
+# is unsupported in `output: 'export'`, and Workers Static Assets applies these
+# natively — WITHOUT invoking the Worker, which the old Next headers could not
+# claim. Keep it in sync with serverOnlyConfig in next.config.mjs, which is the
+# `next dev` half of the same intent.
+#
+# Deliberately conservative on security headers: no Permissions-Policy / CSP /
+# COEP, which would risk the cross-origin VidSrc player (fullscreen, autoplay)
+# and the hero trailer embed.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+
+# CF defaults to `max-age=0, must-revalidate` for files in public/, but Next.js
+# hashes filenames under _next/static (e.g. chunks.<hash>.js, fonts named with a
+# content hash), so those files never change — they're safe to cache for a year
+# with immutable.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Brand assets. Unhashed names, so they can't be immutable, but the artwork
+# changes about once a year — under the CF default every visit spent a
+# conditional request on each of the favicon, the manifest, the touch icon and
+# whichever android-chrome size matched. A week of browser cache costs at worst
+# a week of a stale icon after an `icons:build`, which is not a thing anyone
+# notices, and the deploy purge still refreshes every shared cache immediately.
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/site.webmanifest
+  Cache-Control: public, max-age=604800
+/browserconfig.xml
+  Cache-Control: public, max-age=604800
+# Spelled out rather than globbed: Workers Static Assets only guarantees a
+# trailing `*`, and `/apple-touch-icon*.png` silently matching nothing is
+# indistinguishable from it working. These are the exact TARGETS list in
+# scripts/build-app-icons.mjs — add a line when you add a target there.
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/apple-touch-icon-precomposed.png
+  Cache-Control: public, max-age=604800
+/android-chrome-192x192.png
+  Cache-Control: public, max-age=604800
+/android-chrome-512x512.png
+  Cache-Control: public, max-age=604800
+/android-chrome-192x192-maskable.png
+  Cache-Control: public, max-age=604800
+/android-chrome-512x512-maskable.png
+  Cache-Control: public, max-age=604800
+/mstile-150x150.png
+  Cache-Control: public, max-age=604800
+/opengraph-image.png
+  Cache-Control: public, max-age=604800
+# Manifest screenshots, fetched only when Chrome draws the richer install
+# dialog. WebP rather than PNG: they're photographic, and the pair went from
+# 611KB to 134KB.
+/screenshot-wide.webp
+  Cache-Control: public, max-age=604800
+/screenshot-narrow.webp
+  Cache-Control: public, max-age=604800
+# Trailing wildcard, which Workers Static Assets does support. iOS fetches
+# exactly one of these — whichever media query matches the device — and only
+# for an installed app, so the week is about not re-fetching it on every launch.
+/splash/*
+  Cache-Control: public, max-age=604800
+
+# Documents are build-time snapshots refreshed by the 6h scheduled deploy
+# (.github/workflows/deploy.yml), so the shared TTL tracks that interval and the
+# zero browser cache keeps a returning visitor current. Don't let s-maxage drift
+# past the deploy interval: a document that outlives its build is the whole site
+# frozen on old data, since nothing here revalidates on demand.
+#
+# On the reely.space zone itself these s-maxage values are advisory — the cache
+# rule in scripts/cf-waf-setup.mjs sets the edge TTL with `override_origin`, and
+# cf-deploy.mjs purges after every deploy. They still govern every OTHER shared
+# cache (a corporate proxy, an ISP cache), which no purge of ours can reach.
+# Change all three together.
+/
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/movies
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/tv-shows
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/movies/*
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/tv-shows/*
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+# Prerendered like every other document route, and refreshed by the same deploy —
+# they were simply missing here, so they fell through to the asset default
+# (`max-age=0, must-revalidate`): no shared TTL at all, and a conditional request
+# on every visit to a franchise page.
+/collection/*
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/disclaimer
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+# Cast and crew pages and their index. Prerendered documents like every other
+# route above; without a line here they fall through to the asset default and
+# spend a conditional request per visit.
+/people
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/person/*
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+# The feed. A reader polls this on its own schedule, so the shared TTL is the
+# only thing standing between a few thousand subscribers and a request each.
+/rss.xml
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+# Same deal, and all three are indexed: /support is the page every CTA on the
+# site points at, and the two policy pages are what Google's OAuth review
+# fetches. Prerendered shells with no per-visitor content — the supporter's view
+# of /support is swapped in on the client.
+/support
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/privacy
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+/terms
+  Cache-Control: public, max-age=0, s-maxage=21600, stale-while-revalidate=3600
+
+# Personal and noindex — `private` is what keeps them out of every SHARED cache,
+# and that is the part that matters. `no-store` on top of it was doing something
+# else and not a useful something: it also forbids the visitor's OWN browser from
+# keeping a copy, so a returning visitor re-downloaded the document every time
+# for no privacy gained — the personal data isn't in it. These pages are an empty
+# static shell; the watchlist lives in localStorage and is rendered client-side.
+# max-age=0 + must-revalidate keeps them exactly as fresh (revalidate on every
+# use) while letting the 304 do its job.
+/watch-history
+  Cache-Control: private, max-age=0, must-revalidate
+/watchlist
+  Cache-Control: private, max-age=0, must-revalidate

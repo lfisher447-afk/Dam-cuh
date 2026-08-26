@@ -1,0 +1,284 @@
+{
+  "nav": {
+    "home": "Home",
+    "movies": "Movies",
+    "series": "TV Series",
+    "browse": "Browse",
+    "bookmarks": "Bookmarks",
+    "history": "History",
+    "profile": "Profile",
+    "logout": "Logout",
+    "avatarAlt": "Avatar icon",
+    "navIconAlt": "movies nav icon"
+  },
+  "appLayout": {
+    "back": "Go back",
+    "homeLink": "WòFlix home",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Search for movies or TV series",
+    "moviesPlaceholder": "Search for movies",
+    "seriesPlaceholder": "Search for TV series",
+    "browsePlaceholder": "Search for Movies/Shows",
+    "bookmarksPlaceholder": "Search for Bookmarked Shows",
+    "iconAlt": "Search icon"
+  },
+  "home": {
+    "trending": "Trending",
+    "topRated": "Top Rated",
+    "continueWatching": "Continue Watching",
+    "comingSoon": "Coming Soon",
+    "recentlyViewed": "Recently Viewed",
+    "recommended": "Recommended For You",
+    "feelingLucky": "Feeling Lucky",
+    "searchResults": "Found {{count}} results for \"{{query}}\"",
+    "noResults": "No results found",
+    "updating": "Updating results...",
+    "loading": "Loading..."
+  },
+  "hero": {
+    "comingSoon": "Coming Soon",
+    "moreInfo": "More Info",
+    "watchNow": "Watch Now",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "trendingCard": {
+    "bookmarkAlt": "Bookmark icon"
+  },
+  "movieCard": {
+    "bookmarkAlt": "Bookmark icon",
+    "categoryAlt": "{{category}} movie"
+  },
+  "bookmarks": {
+    "heading": "Bookmarked TV Series",
+    "bookmarkAlt": "bookmark",
+    "emptyTitle": "Your list is empty",
+    "emptyDesc": "Bookmark movies and TV series to see them here",
+    "searchResults": "Found {{count}} results for \"{{query}}\"",
+    "tabAll": "All ({{count}})",
+    "tabMovies": "Movies ({{count}})",
+    "tabSeries": "Series ({{count}})",
+    "emptyFilter": "No bookmarked {{type}} found",
+    "emptyFilterMovie": "movies",
+    "emptyFilterSeries": "series",
+    "emptyFilterAll": "items"
+  },
+  "categories": {
+    "heading": "Browse",
+    "moods": "Moods",
+    "decades": "Decades",
+    "languages": "Languages",
+    "platforms": "Platforms",
+    "moodNames": {
+      "action": "Action Packed",
+      "feelGood": "Feel Good",
+      "scary": "Scary",
+      "romantic": "Romantic",
+      "sciFi": "Sci-Fi",
+      "thrilling": "Thrilling",
+      "heartfelt": "Heartfelt",
+      "epic": "Epic",
+      "mysterious": "Mysterious",
+      "animated": "Animated",
+      "fantasy": "Fantasy",
+      "historical": "Historical"
+    },
+    "decadeLabels": {
+      "80s": "80s",
+      "90s": "90s",
+      "2000s": "2000s",
+      "2010s": "2010s",
+      "2020s": "2020s"
+    },
+    "languageNames": {
+      "en": "English",
+      "fr": "French",
+      "es": "Spanish",
+      "ja": "Japanese",
+      "ko": "Korean",
+      "hi": "Hindi",
+      "zh": "Chinese",
+      "de": "German",
+      "it": "Italian",
+      "pt": "Portuguese",
+      "ru": "Russian",
+      "ar": "Arabic"
+    },
+    "resultCount": "{{count}} titles",
+    "defaultCategory": "Category",
+    "defaultLanguage": "Language",
+    "defaultDecade": "{{year}}s",
+    "defaultPlatform": "Platform",
+    "defaultCollection": "Collection"
+  },
+  "series": {
+    "heading": "TV Series",
+    "searchResults": "Found {{count}} results for \"{{query}}\"",
+    "filterAll": "All",
+    "noResults": "No results found"
+  },
+  "movies": {
+    "heading": "Movies",
+    "searchResults": "Found {{count}} results for \"{{query}}\"",
+    "filterAll": "All",
+    "noResults": "No results found"
+  },
+  "profile": {
+    "heading": "Settings",
+    "notSignedIn": "Please sign in to view settings.",
+    "avatarAlt": "Avatar",
+    "displayNamePlaceholder": "Your name",
+    "verified": "Verified",
+    "notVerified": "Not verified",
+    "resendVerification": "Resend verification",
+    "sending": "Sending...",
+    "refreshStatus": "Refresh status",
+    "refreshing": "Refreshing...",
+    "memberSince": "Member since {{date}}",
+    "statsTitle": "Your Stats",
+    "watched": "Watched",
+    "bookmarks": "Bookmarks",
+    "topCategory": "Top Category",
+    "languageTitle": "Language",
+    "languageDesc": "Used for content recommendations and browse filters.",
+    "selectLanguage": "Select language",
+    "securityTitle": "Security",
+    "currentPassword": "Current password",
+    "newPassword": "New password (min 6 characters)",
+    "savePassword": "Save Password",
+    "cancel": "Cancel",
+    "changePassword": "Change Password",
+    "dangerZone": "Danger Zone",
+    "signOutLabel": "Sign Out",
+    "signOutDesc": "Sign out of your account",
+    "clearHistoryLabel": "Clear Watch History",
+    "clearHistoryDesc": "Remove all your watched history",
+    "clear": "Clear",
+    "deleteAccountLabel": "Delete Account",
+    "deleteAccountDesc": "Permanently delete your account and all data",
+    "enterPassword": "Enter password",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "unknown": "Unknown",
+    "categoryMovie": "Movies",
+    "categorySeries": "TV Series",
+    "toast": {
+      "emailVerified": "Email verified",
+      "stillNotVerified": "Still not verified. Check your inbox.",
+      "refreshFailed": "Failed to refresh status",
+      "nameUpdated": "Display name updated",
+      "nameFailed": "Failed to update display name",
+      "verificationSent": "Verification email sent",
+      "verificationFailed": "Failed to send verification email",
+      "passwordLength": "New password must be at least 6 characters",
+      "passwordChanged": "Password changed successfully",
+      "passwordWrong": "Current password is incorrect",
+      "passwordFailed": "Failed to change password",
+      "accountDeleted": "Account deleted",
+      "passwordIncorrect": "Password is incorrect",
+      "deleteFailed": "Failed to delete account",
+      "historyCleared": "Watch history cleared",
+      "historyFailed": "Failed to clear watch history"
+    }
+  },
+  "detail": {
+    "notFound": "Content not found",
+    "back": "Go back",
+    "partOf": "Part of ",
+    "yourRating": "Your Rating",
+    "comingSoon": "Coming Soon",
+    "reminded": "Reminded",
+    "remindMe": "Remind Me",
+    "continueWatching": "Continue Watching",
+    "watchNow": "Watch Now",
+    "watchDemo": "Watch Demo",
+    "demoQuality": "Demo",
+    "linkCopied": "Link copied to clipboard",
+    "share": "Share",
+    "markedWatched": "Marked as watched",
+    "watched": "Watched",
+    "episodesHeading": "Episodes — Season {{season}}",
+    "moreLikeThis": "More Like This",
+    "recommendations": "Recommendations",
+    "topCast": "Top Cast",
+    "clearRating": "Clear",
+    "episodePrefix": "Ep.",
+    "seasonPrefix": "Season",
+    "bookmark": "Bookmark",
+    "bookmarked": "Bookmarked"
+  },
+  "history": {
+    "heading": "Watch History",
+    "empty": "No watch history yet.",
+    "movieLabel": "Movie",
+    "seriesLabel": "TV Series",
+    "removeTitle": "Remove from history"
+  },
+  "auth": {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "repeatPasswordPlaceholder": "Repeat password",
+    "fieldRequired": "This field cannot be empty",
+    "invalidEmail": "Invalid email address",
+    "passwordLength": "Password must be at least 8 characters",
+    "passwordsMismatch": "Passwords do not match",
+    "loginToAccount": "Login to your account",
+    "createAccount": "Create your account",
+    "or": "or",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "signUpLink": "Sign up",
+    "loginLink": "Login",
+    "continueWithGoogle": "Continue with Google"
+  },
+  "authLayout": {
+    "brand": "WòFlix",
+    "tagline": "Discover your next favorite movie or TV series."
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "Oops! The page you are looking for doesn't exist.",
+    "goHome": "Go back home"
+  },
+  "quickView": {
+    "noOverview": "No overview available.",
+    "watchNow": "Watch Now",
+    "bookmarkAlt": "Bookmark"
+  },
+  "videoPlayer": {
+    "close": "Close",
+    "retry": "Retry",
+    "settings": "Settings",
+    "speed": "Speed",
+    "pip": "Picture-in-Picture",
+    "failedToLoad": "Could not load the video. Try again."
+  },
+  "playIcon": {
+    "play": "Play"
+  },
+  "platform": {
+    "heading": "Streaming Platforms",
+    "desc": "Browse movies available on your favorite streaming services"
+  },
+  "collection": {
+    "resultCount": "{{count}} titles",
+    "notFound": "Collection not found",
+    "defaultName": "Collection"
+  },
+  "results": {
+    "resultCount": "{{count}} titles",
+    "noResults": "No results found",
+    "defaultCategory": "Category",
+    "defaultLanguage": "Language",
+    "defaultDecade": "{{year}}s",
+    "defaultPlatform": "Platform"
+  },
+  "app": {
+    "loggedIn": "Logged in successfully",
+    "googleSignInFailed": "Google sign-in failed"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "movies": "Films",
+    "series": "Séries TV",
+    "browse": "Parcourir",
+    "bookmarks": "Favoris",
+    "history": "Historique",
+    "profile": "Profil",
+    "logout": "Déconnexion"
+  },
+  "appLayout": {
+    "back": "Retour",
+    "homeLink": "Accueil WòFlix",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "Rechercher des films ou séries",
+    "moviesPlaceholder": "Rechercher des films",
+    "seriesPlaceholder": "Rechercher des séries TV",
+    "browsePlaceholder": "Rechercher Films/Séries",
+    "bookmarksPlaceholder": "Rechercher dans les favoris"
+  },
+  "home": {
+    "trending": "Tendances",
+    "topRated": "Mieux notés",
+    "continueWatching": "Continuer à regarder",
+    "comingSoon": "À venir",
+    "recentlyViewed": "Récemment consultés",
+    "recommended": "Recommandés pour vous",
+    "feelingLucky": "J'ai de la chance",
+    "noResults": "Aucun résultat trouvé",
+    "updating": "Mise à jour des résultats..."
+  },
+  "hero": {
+    "comingSoon": "À venir",
+    "moreInfo": "Plus d'infos",
+    "watchNow": "Regarder"
+  },
+  "bookmarks": {
+    "heading": "Séries TV favorites",
+    "emptyTitle": "Votre liste est vide",
+    "emptyDesc": "Ajoutez des films et séries à vos favoris pour les voir ici",
+    "tabAll": "Tout ({{count}})",
+    "tabMovies": "Films ({{count}})",
+    "tabSeries": "Séries ({{count}})"
+  },
+  "categories": {
+    "heading": "Parcourir",
+    "moods": "Ambiances",
+    "decades": "Décennies",
+    "languages": "Langues",
+    "platforms": "Plateformes",
+    "moodNames": {
+      "action": "Plein d'action",
+      "feelGood": "Bien-être",
+      "scary": "Effrayant",
+      "romantic": "Romantique",
+      "sciFi": "Science-Fiction",
+      "thrilling": "Palpitant",
+      "heartfelt": "Émouvant",
+      "epic": "Épique",
+      "mysterious": "Mystérieux",
+      "animated": "Animation",
+      "fantasy": "Fantastique",
+      "historical": "Historique"
+    },
+    "decadeLabels": {
+      "80s": "80s",
+      "90s": "90s",
+      "2000s": "2000s",
+      "2010s": "2010s",
+      "2020s": "2020s"
+    },
+    "languageNames": {
+      "en": "Anglais",
+      "fr": "Français",
+      "es": "Espagnol",
+      "ja": "Japonais",
+      "ko": "Coréen",
+      "hi": "Hindi",
+      "zh": "Chinois",
+      "de": "Allemand",
+      "it": "Italien",
+      "pt": "Portugais",
+      "ru": "Russe",
+      "ar": "Arabe"
+    }
+  },
+  "series": {
+    "heading": "Séries TV",
+    "filterAll": "Tout",
+    "noResults": "Aucun résultat trouvé"
+  },
+  "movies": {
+    "heading": "Films",
+    "filterAll": "Tout",
+    "noResults": "Aucun résultat trouvé"
+  },
+  "profile": {
+    "heading": "Paramètres",
+    "notSignedIn": "Veuillez vous connecter pour voir les paramètres.",
+    "verified": "Vérifié",
+    "notVerified": "Non vérifié",
+    "resendVerification": "Renvoyer la vérification",
+    "refreshStatus": "Actualiser",
+    "memberSince": "Membre depuis {{date}}",
+    "statsTitle": "Vos statistiques",
+    "watched": "Regardés",
+    "bookmarks": "Favoris",
+    "topCategory": "Catégorie préférée",
+    "languageTitle": "Langue",
+    "languageDesc": "Utilisée pour les recommandations et les filtres.",
+    "selectLanguage": "Choisir une langue",
+    "securityTitle": "Sécurité",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe (min 6 caractères)",
+    "savePassword": "Enregistrer",
+    "cancel": "Annuler",
+    "changePassword": "Changer le mot de passe",
+    "dangerZone": "Zone dangereuse",
+    "signOutLabel": "Déconnexion",
+    "signOutDesc": "Se déconnecter de votre compte",
+    "clearHistoryLabel": "Effacer l'historique",
+    "clearHistoryDesc": "Supprimer tout votre historique de visionnage",
+    "clear": "Effacer",
+    "deleteAccountLabel": "Supprimer le compte",
+    "deleteAccountDesc": "Supprimer définitivement votre compte et toutes ses données",
+    "enterPassword": "Entrez votre mot de passe",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "unknown": "Inconnu",
+    "categoryMovie": "Films",
+    "categorySeries": "Séries TV"
+  },
+  "detail": {
+    "notFound": "Contenu introuvable",
+    "back": "Retour",
+    "comingSoon": "À venir",
+    "reminded": "Rappel activé",
+    "remindMe": "Me rappeler",
+    "continueWatching": "Continuer",
+    "watchNow": "Regarder",
+    "watchDemo": "Voir la démo",
+    "demoQuality": "Démo",
+    "share": "Partager",
+    "watched": "Vu",
+    "moreLikeThis": "Similaires",
+    "recommendations": "Recommandations",
+    "topCast": "Distribution",
+    "seasonPrefix": "Saison"
+  },
+  "history": {
+    "heading": "Historique",
+    "empty": "Aucun historique.",
+    "movieLabel": "Film",
+    "seriesLabel": "Série TV"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signUp": "Inscription",
+    "loginToAccount": "Connectez-vous",
+    "createAccount": "Créez votre compte",
+    "or": "ou",
+    "dontHaveAccount": "Pas encore de compte ?",
+    "alreadyHaveAccount": "Déjà un compte ?",
+    "signUpLink": "S'inscrire",
+    "loginLink": "Se connecter",
+    "continueWithGoogle": "Continuer avec Google"
+  },
+  "authLayout": {
+    "tagline": "Découvrez votre prochain film ou série préféré."
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "Oups ! La page que vous cherchez n'existe pas.",
+    "goHome": "Retour à l'accueil"
+  },
+  "quickView": {
+    "noOverview": "Aucun aperçu disponible.",
+    "watchNow": "Regarder"
+  },
+  "videoPlayer": {
+    "close": "Fermer",
+    "retry": "Réessayer",
+    "settings": "Paramètres",
+    "speed": "Vitesse",
+    "pip": "Picture-in-Picture",
+    "failedToLoad": "Impossible de charger la vidéo. Réessayez."
+  },
+  "playIcon": {
+    "play": "Lecture"
+  },
+  "platform": {
+    "heading": "Plateformes de streaming",
+    "desc": "Parcourez les films disponibles sur vos services de streaming préférés"
+  },
+  "collection": {
+    "notFound": "Collection introuvable"
+  },
+  "results": {
+    "noResults": "Aucun résultat trouvé"
+  }
+}

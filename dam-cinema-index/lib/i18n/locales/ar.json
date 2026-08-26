@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "movies": "أفلام",
+    "series": "مسلسلات",
+    "browse": "تصفح",
+    "bookmarks": "المفضلة",
+    "history": "السجل",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج"
+  },
+  "appLayout": {
+    "back": "رجوع",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "البحث عن أفلام أو مسلسلات",
+    "moviesPlaceholder": "البحث عن أفلام",
+    "seriesPlaceholder": "البحث عن مسلسلات"
+  },
+  "home": {
+    "trending": "رائج",
+    "topRated": "الأعلى تقييماً",
+    "continueWatching": "مشاهدة المتابعة",
+    "comingSoon": "قريباً",
+    "recentlyViewed": "شوهد مؤخراً",
+    "recommended": "موصى به لك",
+    "noResults": "لم يتم العثور على نتائج"
+  },
+  "categories": {
+    "heading": "تصفح",
+    "moods": "المزاج",
+    "decades": "العقود",
+    "languages": "اللغات",
+    "platforms": "المنصات"
+  },
+  "series": {
+    "heading": "مسلسلات",
+    "filterAll": "الكل",
+    "noResults": "لم يتم العثور على نتائج"
+  },
+  "movies": {
+    "heading": "أفلام",
+    "filterAll": "الكل",
+    "noResults": "لم يتم العثور على نتائج"
+  },
+  "profile": {
+    "heading": "الإعدادات",
+    "verified": "موثق",
+    "notVerified": "غير موثق",
+    "statsTitle": "إحصائياتك",
+    "watched": "تمت المشاهدة",
+    "bookmarks": "المفضلة",
+    "languageTitle": "اللغة",
+    "securityTitle": "الأمان",
+    "changePassword": "تغيير كلمة المرور",
+    "dangerZone": "منطقة خطر",
+    "signOutLabel": "تسجيل الخروج",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "delete": "حذف"
+  },
+  "detail": {
+    "watchNow": "شاهد الآن",
+    "watchDemo": "شاهد العرض التوضيحي",
+    "demoQuality": "عرض توضيحي",
+    "share": "مشاركة",
+    "topCast": "طاقم التمثيل"
+  },
+  "history": {
+    "heading": "السجل",
+    "empty": "لا يوجد سجل."
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "or": "أو",
+    "continueWithGoogle": "المتابعة مع Google"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "عذراً! الصفحة التي تبحث عنها غير موجودة.",
+    "goHome": "العودة إلى الرئيسية"
+  },
+  "quickView": {
+    "watchNow": "شاهد الآن"
+  },
+  "playIcon": {
+    "play": "تشغيل"
+  }
+}

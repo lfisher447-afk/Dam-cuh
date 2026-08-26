@@ -1,0 +1,17 @@
+# Local and generated artifacts
+node_modules
+.next
+coverage
+*.log
+
+# Preserved reference source and alternate deployment stack
+legacy
+cloudflare
+movies-streaming-platform-main.zip
+
+# Local tooling and operational artifacts that do not run in Vercel
+scripts
+scrapers
+sources
+migrations
+chrome-profile

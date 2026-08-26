@@ -1,0 +1,98 @@
+{
+  "account_id": "90d6fc64545d1c449331032979dcbfb5",
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // A small hand-written Worker, not a framework adapter. The site is a static
+  // export served from `assets` below; this script only answers /api/* and the
+  // detail ids the build did not prerender. See cloudflare/worker.js, and
+  // docs/superpowers/specs/2026-08-03-static-export-migration-design.md for why
+  // OpenNext was removed. Built by scripts/build-worker.mjs (esbuild), which
+  // resolves the `@/…` aliases the shared services use.
+  "main": ".cloudflare/worker.mjs",
+  "name": "movies-streaming-platform",
+  "compatibility_date": "2026-06-11",
+  // nodejs_compat: the shared services read `process.env`, which the Worker
+  // populates from its secrets on the first request.
+  //
+  // global_fetch_strictly_public: makes fetch() from inside the Worker resolve
+  // over the public internet instead of looping back into this same Worker.
+  // Every TMDB subrequest targets a third-party host.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    // `next build` with DEPLOY_TARGET=cloudflare writes the whole site here.
+    // Cloudflare matches these BEFORE invoking the Worker, which is the entire
+    // point of the migration: a prerendered page view runs no code, costs no
+    // CPU against the 10ms budget, and is exempt from the 100k requests/day cap.
+    "directory": "out",
+    "binding": "ASSETS",
+    // Unmatched paths fall through to the Worker (it is `main`), which decides
+    // between the tail-detail fallback and serving out/404.html itself.
+    "not_found_handling": "none",
+    // Assets must never swallow an API call.
+    // /lists is a real exported page, but its contents are rows written after
+    // the build — the Worker answers it so the directory links are in the HTML
+    // a crawler receives. See handleListsDirectory.
+    "run_worker_first": ["/api/*", "/lists"],
+  },
+  "observability": {
+    "enabled": true,
+  },
+  // `wrangler dev` otherwise takes its Host from the first route above, so a
+  // local request arrives at the Worker as http://reely.space/… — and the OAuth
+  // redirect_uri is built from the request's own origin, which made local
+  // sign-in ask Google for `http://reely.space/api/auth/callback`. Google
+  // refuses to register that: a published app may only use https, with one
+  // exception — localhost. Pinning the dev host to localhost puts local sign-in
+  // on that exception, so the only URIs the OAuth client needs are the two real
+  // https ones plus http://localhost:8788/api/auth/callback.
+  "dev": {
+    "host": "localhost:8788",
+    "port": 8788,
+  },
+  "preview_urls": false,
+  // Never expose movies-streaming-platform.<subdomain>.workers.dev. It would
+  // serve the whole site on a second, crawlable hostname (duplicate content vs
+  // www.reely.space) and it bypasses every WAF / cache / redirect rule, which
+  // are all bound to the reely.space zone.
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "reely.space",
+      "zone_name": "reely.space",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.reely.space",
+      "zone_name": "reely.space",
+      "custom_domain": true,
+    },
+  ],
+  // Accounts, entitlement and the synced library. ONLY the /api/auth/*,
+  // /api/billing/*, /api/sync, /api/lists, /api/push/* routes and the cron sweep
+  // touch this — no page view, no /api/search, and no tail-id fallback reads it,
+  // which is what keeps the paths that carry ~100% of this Worker's traffic free
+  // of database latency.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "reely",
+      "database_id": "3ef0e030-df5b-4852-8fda-bda034b004b7",
+    },
+  ],
+  // The new-episode sweep. Hourly, bounded to 25 TMDB lookups and 20 pushes per
+  // tick (lib/push/sweep.ts) so one invocation can never approach the
+  // 50-subrequest cap. Cron invocations are free of the request budget that page
+  // views compete for.
+  "triggers": {
+    "crons": ["0 * * * *"],
+  },
+  // Preserve vars configured in the Cloudflare Dashboard on deploy
+  "keep_vars": true,
+  "vars": {
+    "ENVIRONMENT": "production",
+    "NODE_ENV": "production",
+    // The open-for-everyone window for the Reely Player: while set,
+    // /api/pro/ticket mints tickets with no account at all. DELETE this var
+    // to lock the player behind supporter entitlement - no code change.
+    "PRO_PLAYER_OPEN": "1",
+  },
+}

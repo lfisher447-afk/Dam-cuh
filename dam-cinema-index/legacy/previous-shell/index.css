@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  /* Fallback HSL */
+
+  --bg: hsl(0 0% 4%);
+  --surface: hsl(0 0% 8%);
+
+  --text: hsl(0 0% 96%);
+  --text-muted: hsl(0 0% 65%);
+
+  --border: hsl(0 0% 22%);
+
+  --primary: hsl(357, 92%, 47%);
+  --warning: hsl(0 60% 65%);
+
+  /* OKLCH */
+  --bg: oklch(0.15 0 20);
+  --surface: oklch(0.2 0 20);
+
+  --text: oklch(0.96 0 20);
+  --text-muted: oklch(0.72 0 20);
+
+  --border: oklch(0.32 0 20);
+
+  --primary: oklch(0.58 0.24 25);
+  --warning: oklch(0.72 0.08 25);
+
+  --shadow-s:
+    inset 0 1px 2px #ffffff30, /* top highlight */ 0 1px 2px #00000030,
+    /* dark shadow */ 0 2px 4px #00000015; /* soft shadow */
+  --shadow-m:
+    inset 0 1px 2px #ffffff50, /* top highlight */ 0 2px 4px #00000030,
+    /* dark shadow */ 0 4px 8px #00000015; /* soft shadow */
+  --shadow-l:
+    inset 0 1px 2px #ffffff70, /* top highlight */ 0 4px 6px #00000030,
+    /* dark shadow */ 0 6px 10px #00000015; /* soft shadow */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.3s ease,
+    color 10ms ease;
+}
+/* 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+} */

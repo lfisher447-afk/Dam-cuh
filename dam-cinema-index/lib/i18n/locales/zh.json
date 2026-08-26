@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "首页",
+    "movies": "电影",
+    "series": "剧集",
+    "browse": "浏览",
+    "bookmarks": "收藏",
+    "history": "历史",
+    "profile": "个人资料",
+    "logout": "退出登录"
+  },
+  "appLayout": {
+    "back": "返回",
+    "brand": "WòFlix"
+  },
+  "search": {
+    "allPlaceholder": "搜索电影或剧集",
+    "moviesPlaceholder": "搜索电影",
+    "seriesPlaceholder": "搜索剧集"
+  },
+  "home": {
+    "trending": "热门",
+    "topRated": "高分",
+    "continueWatching": "继续观看",
+    "comingSoon": "即将上映",
+    "recentlyViewed": "最近观看",
+    "recommended": "为您推荐",
+    "noResults": "未找到结果"
+  },
+  "categories": {
+    "heading": "浏览",
+    "moods": "心情",
+    "decades": "年代",
+    "languages": "语言",
+    "platforms": "平台"
+  },
+  "series": {
+    "heading": "剧集",
+    "filterAll": "全部",
+    "noResults": "未找到结果"
+  },
+  "movies": {
+    "heading": "电影",
+    "filterAll": "全部",
+    "noResults": "未找到结果"
+  },
+  "profile": {
+    "heading": "设置",
+    "verified": "已验证",
+    "notVerified": "未验证",
+    "statsTitle": "数据统计",
+    "watched": "已观看",
+    "bookmarks": "收藏",
+    "languageTitle": "语言",
+    "securityTitle": "安全",
+    "changePassword": "修改密码",
+    "dangerZone": "危险区域",
+    "signOutLabel": "退出登录",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除"
+  },
+  "detail": {
+    "watchNow": "立即观看",
+    "watchDemo": "观看演示",
+    "demoQuality": "演示",
+    "share": "分享",
+    "topCast": "主演"
+  },
+  "history": {
+    "heading": "观看历史",
+    "empty": "暂无历史记录。"
+  },
+  "auth": {
+    "login": "登录",
+    "signUp": "注册",
+    "or": "或",
+    "continueWithGoogle": "使用 Google 继续"
+  },
+  "pageNotFound": {
+    "heading": "404",
+    "message": "哎呀！您要找的页面不存在。",
+    "goHome": "返回首页"
+  },
+  "quickView": {
+    "watchNow": "立即观看"
+  },
+  "playIcon": {
+    "play": "播放"
+  }
+}
